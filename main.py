@@ -21,16 +21,17 @@ print(get_days_from_today(date))
 # second task
 def get_numbers_ticket(min, max, quantity):
     my_set = set()
-    if min >= 1 and max <= 1000:
-        while len(my_set) < quantity:
-            i = random.randint(min, max)
-            my_set.add(i)
-    elif quantity > (max-min+1):
-        return f'There are no {quantity} numbers in this range.'
+    if isinstance(min, int) and isinstance(max, int) and isinstance(quantity, int):
+        if quantity > (max-min+1):
+            return f'There are no {quantity} numbers in this range.'
+        if min >= 1 and max <= 1000:
+            while len(my_set) < quantity:
+                i = random.randint(min, max)
+                my_set.add(i)
     return list(my_set)
 
 
-print(get_numbers_ticket(1, 12, 5))
+print(get_numbers_ticket(1, 12, 0.5))
 
 
 # third task
