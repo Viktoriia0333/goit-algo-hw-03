@@ -1,6 +1,7 @@
 # first task
 from datetime import datetime
 import random
+import re
 
 
 def get_days_from_today(date):
@@ -13,8 +14,8 @@ def get_days_from_today(date):
         return 'Please, enter a date in the right format'
 
 
-# date = input('Enter date (format: \'РРРР.ММ.ДД\'): ')
-# print(get_days_from_today(date))
+date = input('Enter date (format: \'РРРР.ММ.ДД\'): ')
+print(get_days_from_today(date))
 
 
 # second task
@@ -32,3 +33,19 @@ def get_numbers_ticket(min, max, quantity):
 
 
 print(get_numbers_ticket(1, 12, 20))
+
+
+# third task
+def normalize_phone(phone_number):
+    cleaned_string = re.sub(r'[^\d+]', '', phone_number)
+    if cleaned_string.startswith('+'):
+        if not cleaned_string.startswith('+38'):
+            return f'Only ukrainian numbers supported'
+    elif cleaned_string.startswith('380'):
+        cleaned_string = '+' + cleaned_string
+    else:
+        cleaned_string = '+38'+cleaned_string
+    return cleaned_string
+
+
+print(normalize_phone('0968645223'))
